@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Real-Time Fraud Detection Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header>
+
+        <div class="header-content">
+
+            <h1>Real-Time Fraud Detection</h1>
+
+            <p>
+                Transaction Risk Scoring & Monitoring Dashboard
+            </p>
+
+        </div>
+
+    </header>
+
+
+    <!-- =====================================================
+         MAIN CONTENT
+    ====================================================== -->
+
+    <main>
+
+
+        <!-- =================================================
+             STATISTICS CARDS
+        ================================================== -->
+
+        <section class="stats">
+
+            <div class="card">
+
+                <h3>Total Transactions</h3>
+
+                <p id="totalTransactions">
+                    0
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Fraud Transactions</h3>
+
+                <p id="fraudTransactions">
+                    0
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Legitimate Transactions</h3>
+
+                <p id="legitimateTransactions">
+                    0
+                </p>
+
+            </div>
+
+
+            <div class="card">
+
+                <h3>Fraud Rate</h3>
+
+                <p id="fraudRate">
+                    0%
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             PREDICTION FORM
+        ================================================== -->
+
+        <section class="prediction">
+
+            <div class="section-header">
+
+                <h2>Check Transaction Risk</h2>
+
+                <p>
+                    Enter transaction details to calculate fraud probability.
+                </p>
+
+            </div>
+
+
+            <form id="predictionForm">
+
+
+                <!-- =========================================
+                     BASIC TRANSACTION INFORMATION
+                ========================================== -->
+
+                <h3 class="form-section-title">
+                    Transaction Information
+                </h3>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+
+                        <label for="Time">
+                            Transaction Time
+                        </label>
+
+                        <input
+                            type="number"
+                            id="Time"
+                            placeholder="Example: 1000"
+                            step="any"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="Amount">
+                            Transaction Amount
+                        </label>
+
+                        <input
+                            type="number"
+                            id="Amount"
+                            placeholder="Example: 149.62"
+                            step="any"
+                            min="0"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================================
+                     V1 - V7
+                ========================================== -->
+
+                <h3 class="form-section-title">
+                    PCA Features V1 – V7
+                </h3>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label for="V1">V1</label>
+                        <input type="number" step="any" id="V1" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="V2">V2</label>
+                        <input type="number" step="any" id="V2" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="V3">V3</label>
+                        <input type="number" step="any" id="V3" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="V4">V4</label>
+                        <input type="number" step="any" id="V4" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="V5">V5</label>
+                        <input type="number" step="any" id="V5" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="V6">V6</label>
+                        <input type="number" step="any" id="V6" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="V7">V7</label>
+                        <input type="number" step="any" id="V7" required>
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================================
+                     V8 - V14
+                ========================================== -->
+
+                <h3 class="form-section-title">
+                    PCA Features V8 – V14
+                </h3>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label for="V8">V8</label>
+                        <input type="number" step="any" id="V8" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="V9">V9</label>
+                        <input type="number" step="any" id="V9" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="V10">V10</label>
+                        <input type="number" step="any" id="V10" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="V11">V11</label>
+                        <input type="number" step="any" id="V11" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="V12">V12</label>
+                        <input type="number" step="any" id="V12" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="V13">V13</label>
+                        <input type="number" step="any" id="V13" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="V14">V14</label>
+                        <input type="number" step="any" id="V14" required>
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================================
+                     V15 - V21
+                ========================================== -->
+
+                <h3 class="form-section-title">
+                    PCA Features V15 – V21
+                </h3>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label for="V15">V15</label>
+                        <input type="number" step="any" id="V15" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="V16">V16</label>
+                        <input type="number" step="any" id="V16" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="V17">V17</label>
+                        <input type="number" step="any" id="V17" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="V18">V18</label>
+                        <input type="number" step="any" id="V18" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="V19">V19</label>
+                        <input type="number" step="any" id="V19" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="V20">V20</label>
+                        <input type="number" step="any" id="V20" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="V21">V21</label>
+                        <input type="number" step="any" id="V21" required>
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================================
+                     V22 - V28
+                ========================================== -->
+
+                <h3 class="form-section-title">
+                    PCA Features V22 – V28
+                </h3>
+
+
+                <div class="form-grid">
+
+                    <div class="form-group">
+                        <label for="V22">V22</label>
+                        <input type="number" step="any" id="V22" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="V23">V23</label>
+                        <input type="number" step="any" id="V23" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="V24">V24</label>
+                        <input type="number" step="any" id="V24" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="V25">V25</label>
+                        <input type="number" step="any" id="V25" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="V26">V26</label>
+                        <input type="number" step="any" id="V26" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="V27">V27</label>
+                        <input type="number" step="any" id="V27" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="V28">V28</label>
+                        <input type="number" step="any" id="V28" required>
+                    </div>
+
+                </div>
+
+
+
+                <!-- =========================================
+                     PREDICTION BUTTON
+                ========================================== -->
+
+                <button
+                    type="submit"
+                    class="predict-button"
+                >
+                    Check Transaction
+                </button>
+
+
+            </form>
+
+
+
+            <!-- =============================================
+                 PREDICTION RESULT
+            ============================================== -->
+
+            <div
+                id="predictionResult"
+                class="prediction-result"
+            ></div>
+
+        </section>
+
+
+
+        <!-- =================================================
+             TRANSACTION TABLE
+        ================================================== -->
+
+        <section class="transactions">
+
+            <div class="section-header">
+
+                <h2>Recent Transactions</h2>
+
+                <p>
+                    Transactions stored in PostgreSQL
+                </p>
+
+            </div>
+
+
+            <div class="table-container">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+
+                            <th>ID</th>
+
+                            <th>Amount</th>
+
+                            <th>Fraud Probability</th>
+
+                            <th>Prediction</th>
+
+                            <th>Risk Level</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody id="transactionTable">
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <!-- =====================================================
+         JAVASCRIPT
+    ====================================================== -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
